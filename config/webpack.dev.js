@@ -20,7 +20,11 @@ module.exports = {
       rules: [
           { 
               test: /.ts$/,
-              use: [{
+              use: [
+            {
+                loader: 'angular2-template-loader'
+            },
+            {
                   loader: 'awesome-typescript-loader'
               }]
           }

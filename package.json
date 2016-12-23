@@ -16,6 +16,7 @@
     "@angular/platform-browser-dynamic": "^2.4.1",
     "@types/core-js": "^0.9.35",
     "@types/es6-collections": "^0.5.29",
+    "angular2-template-loader": "^0.6.0",
     "awesome-typescript-loader": "^3.0.0-beta.17",
     "core-js": "^2.4.1",
     "es6-collections": "^0.5.6",
