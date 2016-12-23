@@ -2,6 +2,7 @@
 const helpers = require('./helpers');
 const webpack = require("webpack");
 const { CheckerPlugin } = require('awesome-typescript-loader')
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   context: helpers.root("./src"),
@@ -35,7 +36,8 @@ module.exports = {
       filename: "commons.js",
       minChunks: 2,
     }),
-    new CheckerPlugin()
+    new CheckerPlugin(),
+    new HtmlWebpackPlugin()
   ],
   devServer: {
     contentBase:  helpers.root("./dist"),  // New

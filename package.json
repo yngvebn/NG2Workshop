@@ -19,6 +19,7 @@
     "awesome-typescript-loader": "^3.0.0-beta.17",
     "core-js": "^2.4.1",
     "es6-collections": "^0.5.6",
+    "html-webpack-plugin": "^2.24.1",
     "rxjs": "^5.0.2",
     "typescript": "^2.1.4",
     "webpack": "2.2.0-rc.2",
