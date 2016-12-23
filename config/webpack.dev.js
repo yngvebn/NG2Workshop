@@ -2,7 +2,9 @@
 const helpers = require('./helpers');
 const webpack = require("webpack");
 const { CheckerPlugin } = require('awesome-typescript-loader')
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+
 
 module.exports = {
     devtool: 'inline-source-map',
@@ -35,6 +37,14 @@ module.exports = {
                     loader: 'html-loader'
                 }]
             },
+            { 
+              test: /\.scss$/, 
+             loader: [ExtractTextPlugin.extract({ fallbackLoader: 'style-loader', loader: ['css-loader'] }),
+                    'to-string-loader',
+                    'css-loader',
+                    'sass-loader'
+                ],
+            }
         ]
     },
     output: {
@@ -47,7 +57,10 @@ module.exports = {
             filename: "common.js",
             minChunks: Infinity
         }),
-        new CheckerPlugin()
+        new CheckerPlugin(),
+        new ExtractTextPlugin({
+            filename: "[name].css"
+        }),
     ],
     devServer: {
         contentBase: helpers.root('./dist'),
