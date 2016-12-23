@@ -7,9 +7,9 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
     context: helpers.root("./src"),
     entry: {
-        app: "./main.ts",
         polyfills: './polyfills.ts',
-        vendor: './vendor.ts'
+        vendor: './vendor.ts',
+        app: "./main.ts"
     },
     resolve: {
         extensions: ['.js', '.ts'],
@@ -21,9 +21,9 @@ module.exports = {
             {
                 test: /.ts$/,
                 use: [
-                    {
-                        loader: 'angular2-template-loader'
-                    },
+                    // {
+                    //     loader: 'angular2-template-loader'
+                    // },
                     {
                         loader: 'awesome-typescript-loader'
                     }]
@@ -42,12 +42,11 @@ module.exports = {
     },
     plugins: [
         new webpack.optimize.CommonsChunkPlugin({
-            name: "commons",
-            filename: "commons.js",
-            minChunks: 2,
+            name: "common",
+            filename: "common.js",
+            minChunks: Infinity
         }),
-        new CheckerPlugin(),
-        new HtmlWebpackPlugin()
+        new CheckerPlugin()
     ],
     devServer: {
         contentBase: helpers.root('./dist'),
