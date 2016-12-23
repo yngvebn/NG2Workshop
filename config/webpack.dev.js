@@ -1,11 +1,14 @@
 'use strict';
 const helpers = require('./helpers');
 const webpack = require("webpack");
+const { CheckerPlugin } = require('awesome-typescript-loader')
 
 module.exports = {
   context: helpers.root("./src"),
   entry: {
     app: "./main.ts",
+    polyfills: './polyfills.ts',
+    vendor: './vendor.ts'
   },
   resolve: {
       extensions: ['.js', '.ts'],
@@ -32,6 +35,7 @@ module.exports = {
       filename: "commons.js",
       minChunks: 2,
     }),
+    new CheckerPlugin()
   ],
   devServer: {
     contentBase:  helpers.root("./dist"),  // New
