@@ -1,0 +1,27 @@
+{
+  "name": "scratch",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": {
+    "url": "https://github.com/yngvebn/scratch.git",
+    "type": "git"
+  },
+  "author": "Yngve Bakken Nilsen <yngve.nilsen@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@angular/common": "^2.4.1",
+    "@angular/compiler": "^2.4.1",
+    "@angular/core": "^2.4.1",
+    "@angular/platform-browser": "^2.4.1",
+    "@angular/platform-browser-dynamic": "^2.4.1",
+    "@types/core-js": "^0.9.35",
+    "awesome-typescript-loader": "^3.0.0-beta.17",
+    "core-js": "^2.4.1",
+    "typescript": "^2.1.4",
+    "webpack": "2.2.0-rc.2"
+  },
+  "peerDependencies": {
+    "rxjs": "^5.0.1",
+    "zone.js": "^0.7.4"
+  }
+}
