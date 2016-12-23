@@ -5,45 +5,53 @@ const { CheckerPlugin } = require('awesome-typescript-loader')
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  context: helpers.root("./src"),
-  entry: {
-    app: "./main.ts",
-    polyfills: './polyfills.ts',
-    vendor: './vendor.ts'
-  },
-  resolve: {
-      extensions: ['.js', '.ts'],
-    modules: [helpers.root("./src"), "node_modules"]
-  },
-  module: {
-     
-      rules: [
-          { 
-              test: /.ts$/,
-              use: [
+    context: helpers.root("./src"),
+    entry: {
+        app: "./main.ts",
+        polyfills: './polyfills.ts',
+        vendor: './vendor.ts'
+    },
+    resolve: {
+        extensions: ['.js', '.ts'],
+        modules: [helpers.root("./src"), "node_modules"]
+    },
+    module: {
+
+        rules: [
             {
-                loader: 'angular2-template-loader'
+                test: /.ts$/,
+                use: [
+                    {
+                        loader: 'angular2-template-loader'
+                    },
+                    {
+                        loader: 'awesome-typescript-loader'
+                    }]
             },
             {
-                  loader: 'awesome-typescript-loader'
-              }]
-          }
-      ]
-  },
-  output: {
-    path: helpers.root("./dist"),
-    filename: "[name].js",
-  },
-   plugins: [
-    new webpack.optimize.CommonsChunkPlugin({
-      name: "commons",
-      filename: "commons.js",
-      minChunks: 2,
-    }),
-    new CheckerPlugin(),
-    new HtmlWebpackPlugin()
-  ],
-  devServer: {
-    contentBase:  helpers.root("./dist"),  // New
-  },
+                test: /\.html$/,
+                use: [{
+                    loader: 'html-loader'
+                }]
+            },
+        ]
+    },
+    output: {
+        path: helpers.root("./dist"),
+        filename: "[name].js",
+    },
+    plugins: [
+        new webpack.optimize.CommonsChunkPlugin({
+            name: "commons",
+            filename: "commons.js",
+            minChunks: 2,
+        }),
+        new CheckerPlugin(),
+        new HtmlWebpackPlugin()
+    ],
+    devServer: {
+        contentBase: helpers.root('./dist'),
+        inline: true,
+        port: 91  // New
+    },
 };

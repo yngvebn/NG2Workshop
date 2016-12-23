@@ -20,10 +20,16 @@
     "awesome-typescript-loader": "^3.0.0-beta.17",
     "core-js": "^2.4.1",
     "es6-collections": "^0.5.6",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "html-loader": "^0.4.4",
     "html-webpack-plugin": "^2.24.1",
+    "json-loader": "^0.5.4",
+    "null-loader": "^0.1.1",
+    "raw-loader": "^0.5.1",
     "rxjs": "^5.0.2",
     "typescript": "^2.1.4",
     "webpack": "2.2.0-rc.2",
+    "webpack-dev-server": "2.2.0-rc.0",
     "zone.js": "^0.7.4"
   }
 }
