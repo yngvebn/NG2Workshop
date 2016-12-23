@@ -5,6 +5,7 @@ const { CheckerPlugin } = require('awesome-typescript-loader')
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
+    devtool: 'inline-source-map',
     context: helpers.root("./src"),
     entry: {
         polyfills: './polyfills.ts',
