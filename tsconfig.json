@@ -2,8 +2,9 @@
     "compilerOptions": {
         "module": "commonjs",
         "target": "es5",
+        "outDir": "public",
         "noImplicitAny": false,
-        "sourceMap": false,
+        "sourceMap": true,
         "emitDecoratorMetadata": true,
         "declaration": false,
         "experimentalDecorators": true,

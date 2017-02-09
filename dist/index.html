@@ -1,18 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:300,400,700|Roboto+Condensed:300,400,700" lazyload="">
-<script src="/common.js"></script>
-<script src="/polyfills.js"></script>
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:300,400,700|Roboto+Condensed:300,400,700"
+        lazyload="">
+        <script src="/common.js"></script>
+        <script src="/polyfills.js"></script>
 </head>
+
 <body>
-    
-    <app class="p-wrapper" id="page-content">Loading...</app>
+    <app class="p-wrapper" id="page-content">
+        <div class="page-loader">
+            <style>
+                @@keyframes loadingspinner {
+                    0% {
+                        transform: rotateZ(0);
+                    }
+                    50% {}
+                    100% {
+                        transform: rotateZ(720deg);
+                    }
+                }
+                
+                .page-loader {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    position: fixed;
+                    top: 0;
+                    right: 0;
+                    bottom: 50%;
+                    left: 0;
+                    z-index: 1100;
+                }
+                
+                .loader--inline__svg {
+                    transform-origin: center;
+                }
+                
+                .loader--inline__svg svg {
+                    animation: loadingspinner 1s infinite linear;
+                    transform-origin: 50% 50%;
+                    vertical-align: middle;
+                }
+                
+                .loader--inline__svg svg path {
+                    fill: none;
+                    stroke-width: 7;
+                }
+                
+                .loader--inline__svg svg path.loader-line {
+                    stroke-dasharray: 50 100;
+                    transform-origin: center;
+                    stroke-width: 5;
+                    stroke: #ddd;
+                }
+            </style>
+
+            <span class="loader--inline__svg">
+                <svg class="ip-inner" width="32px" height="32px" viewBox="0 0 40 40">
+                    <path id="ip-loader-line" class="loader-line" d="M35,20c0,8.3-6.7,15-15,15S5,28.3,5,20S11.7,5,20,5S35,11.7,35,20z" />
+                </svg>
+            </span>
+
+        </div>
+    </app>
     <script src="/vendor.js"></script>
     <script src="/app.js"></script>
     <link rel="stylesheet" href="/base.css">
 </body>
+
 </html>

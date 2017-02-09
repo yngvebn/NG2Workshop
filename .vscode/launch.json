@@ -1,0 +1,13 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Chrome Attach",
+            "type": "chrome",
+            "request": "attach",
+            "sourceMaps": true,
+            "port": 9222,
+            "webRoot": "${workspaceRoot}/dist"
+        }
+    ]
+}
