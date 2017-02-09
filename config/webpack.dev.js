@@ -7,7 +7,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 
 module.exports = {
-    devtool: 'inline-source-map',
+    devtool: 'source-map',
     context: helpers.root("./src"),
     entry: {
         polyfills: './polyfills.ts',
