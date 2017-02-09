@@ -19,31 +19,30 @@ module.exports = {
         modules: [helpers.root("./src"), "node_modules"]
     },
     module: {
-
         rules: [
             {
                 test: /.ts$/,
                 use: [
-                    {
-                        loader: 'angular2-template-loader'
-                    },
-                    {
-                        loader: 'awesome-typescript-loader'
-                    }]
+                    'angular2-template-loader',
+                    'awesome-typescript-loader'
+                ],
             },
             {
                 test: /\.html$/,
-                use: [{
-                    loader: 'html-loader'
-                }]
+                use: [
+                    'html-loader'
+                ]
             },
-            { 
-              test: /\.scss$/, 
-             loader: [ExtractTextPlugin.extract({ fallbackLoader: 'style-loader', loader: ['css-loader'] }),
+            {
+                test: /\.scss$/,
+                use: ['raw-loader', 'sass-loader?sourceMap']
+                    /*ExtractTextPlugin.extract({ fallback: 'style-loader', loader: [
                     'to-string-loader',
-                    'css-loader',
-                    'sass-loader'
-                ],
+                    'css-loader'] }),*/
+                    // 'to-string-loader',
+                    // 'css-loader',
+                    // 'sass-loader'
+                
             }
         ]
     },
