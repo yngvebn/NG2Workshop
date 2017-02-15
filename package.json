@@ -11,11 +11,13 @@
   "dependencies": {
     "@angular/common": "^2.4.1",
     "@angular/compiler": "^2.4.1",
+    "@angular/compiler-cli": "^2.4.7",
     "@angular/core": "^2.4.1",
     "@angular/http": "^2.4.1",
     "@angular/platform-browser": "^2.4.1",
     "@angular/platform-browser-dynamic": "^2.4.1",
     "@angular/router": "^3.4.1",
+    "@ngtools/webpack": "^1.2.9",
     "@types/core-js": "^0.9.35",
     "@types/jasmine": "^2.5.38",
     "angular2-template-loader": "^0.6.0",

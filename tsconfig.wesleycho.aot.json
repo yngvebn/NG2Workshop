@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "module": "commonjs",
+    "noEmitHelpers": true,
+    "target": "ES5",
+    "sourceMap": true
+  },
+  "include": [
+    "types/**/*",
+    "src/app/app.aot.module.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "coverage",
+    "src/app/app.dev.*.ts",
+    "src/app/**/*.testing.module.ts",
+    "**/*.spec.ts"
+  ],
+  "angularCompilerOptions": {
+    "genDir": ".",
+    "entryModule": "src/app/app.aot.module.ts#AppAotModule",
+    "debug": "false"
+  },
+  "compileOnSave": false,
+  "buildOnSave": false
+}
