@@ -8,12 +8,12 @@ const {AotPlugin} = require('@ngtools/webpack')
 
 
 module.exports = {
-    devtool: 'source-map',
-    context: helpers.root("./src"),
+    // devtool: 'source-map',
+    //context: helpers.root("./src"),
     entry: {
-        polyfills: './polyfills.ts',
-        vendor: './vendor.ts',
-        app: "./main.ts"
+        polyfills: './src/polyfills.ts',
+        vendor: './src/vendor.ts',
+        main: "./src/main.ts"
     },
     resolve: {
         extensions: ['.js', '.ts'],
@@ -25,8 +25,6 @@ module.exports = {
                 test: /.ts$/,
                 use: [
                     '@ngtools/webpack'
-                    /*'angular2-template-loader',
-                    'awesome-typescript-loader'*/
                 ],
             },
             {
@@ -38,13 +36,6 @@ module.exports = {
             {
                 test: /\.scss$/,
                 use: ['raw-loader', 'sass-loader?sourceMap']
-                    /*ExtractTextPlugin.extract({ fallback: 'style-loader', loader: [
-                    'to-string-loader',
-                    'css-loader'] }),*/
-                    // 'to-string-loader',
-                    // 'css-loader',
-                    // 'sass-loader'
-                
             }
         ]
     },
@@ -54,15 +45,13 @@ module.exports = {
     },
     plugins: [
          new AotPlugin({
-            tsConfigPath: helpers.root('tsconfig.json'),
-            entryModule: helpers.root('./src/main.ts')
+            tsConfigPath: helpers.root('tsconfig.json')
         }),
-        new webpack.optimize.CommonsChunkPlugin({
-            name: "common",
-            filename: "common.js",
-            minChunks: Infinity
-        }),
-        new CheckerPlugin(),
+        // new webpack.optimize.CommonsChunkPlugin({
+        //     name: "common",
+        //     filename: "common.js",
+        //     minChunks: Infinity
+        // }),
         new ExtractTextPlugin({
             filename: "[name].css"
         }),

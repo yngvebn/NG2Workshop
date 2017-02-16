@@ -2,6 +2,7 @@
     "compilerOptions": {
         "module": "commonjs",
         "target": "es5",
+        "baseUrl": "./src",
         "outDir": "public",
         "noImplicitAny": false,
         "sourceMap": true,
@@ -9,7 +10,21 @@
         "declaration": false,
         "experimentalDecorators": true,
         "lib": [
-            "es5", "dom"
+            "es5",
+            "dom"
         ]
+    },
+    "include": [
+        "types/**/*",
+        "src/app/app.module.ts"
+    ],
+    "exclude": [
+        "node_modules"
+    ],
+    "angularCompilerOptions": {
+        "genDir": ".",
+        "entryModule": "src/app/app.module.ts#AppModule",
+        "debug": "true",
+        "mainPath": "src/main.ts"
     }
 }
