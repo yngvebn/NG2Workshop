@@ -19,12 +19,13 @@
         "src/app/app.module.ts"
     ],
     "exclude": [
-        "node_modules"
+        "node_modules",
+        "src/**/*.spec.ts"
     ],
     "angularCompilerOptions": {
         "genDir": ".",
-        "entryModule": "src/app/app.module.ts#AppModule",
+        "entryModule": "./src/app/app.module.ts#AppModule",
         "debug": "true",
-        "mainPath": "src/main.ts"
+        "mainPath": "./src/main.ts"
     }
 }

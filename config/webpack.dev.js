@@ -11,8 +11,8 @@ module.exports = {
     // devtool: 'source-map',
     //context: helpers.root("./src"),
     entry: {
-        polyfills: './src/polyfills.ts',
-        vendor: './src/vendor.ts',
+       polyfills: './src/polyfills.ts',
+        /*vendor: './src/vendor.ts',*/
         main: "./src/main.ts"
     },
     resolve: {
@@ -45,13 +45,15 @@ module.exports = {
     },
     plugins: [
          new AotPlugin({
-            tsConfigPath: helpers.root('tsconfig.json')
+            tsConfigPath: helpers.root('tsconfig.json'),
+            entryModule: helpers.root('./src/app/app.module#AppModule')
         }),
-        // new webpack.optimize.CommonsChunkPlugin({
-        //     name: "common",
-        //     filename: "common.js",
-        //     minChunks: Infinity
-        // }),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: "common",
+            filename: "common.js",
+            minChunks: Infinity
+        }),
+        new webpack.optimize.UglifyJsPlugin({sourcemap: true, mangle: { keep_fnames: true }}),
         new ExtractTextPlugin({
             filename: "[name].css"
         }),
