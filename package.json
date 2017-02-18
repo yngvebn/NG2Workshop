@@ -6,6 +6,9 @@
     "url": "https://github.com/yngvebn/scratch.git",
     "type": "git"
   },
+  "scripts": {
+    "build": "webpack -p"
+  },
   "author": "Yngve Bakken Nilsen <yngve.nilsen@gmail.com>",
   "license": "MIT",
   "dependencies": {
@@ -17,11 +20,13 @@
     "@angular/platform-browser": "^2.4.7",
     "@angular/platform-browser-dynamic": "^2.4.7",
     "@angular/router": "^3.4.7",
-    "@ngtools/webpack": "^1.2.9",
+    "@angular/tsc-wrapped": "^0.5.2",
+    "@ngtools/webpack": "^1.2.10",
     "@types/core-js": "^0.9.35",
     "@types/jasmine": "^2.5.43",
     "angular2-template-loader": "^0.6.2",
     "awesome-typescript-loader": "^3.0.4",
+    "compression-webpack-plugin": "^0.3.2",
     "core-js": "^2.4.1",
     "extract-text-webpack-plugin": "^2.0.0-beta.4",
     "html-loader": "^0.4.4",
@@ -36,7 +41,7 @@
     "null-loader": "^0.1.1",
     "phantomjs-polyfill": "^0.0.2",
     "raw-loader": "^0.5.1",
-    "reflect-metadata": "0.1.9",
+    "reflect-metadata": "^0.1.9",
     "rxjs": "^5.1.1",
     "to-string-loader": "^1.1.5",
     "ts-helpers": "^1.1.2",

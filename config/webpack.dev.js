@@ -4,15 +4,16 @@ const webpack = require("webpack");
 const { CheckerPlugin } = require('awesome-typescript-loader')
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-const {AotPlugin} = require('@ngtools/webpack') 
+const {AotPlugin} = require('@ngtools/webpack')
+var CompressionPlugin = require("compression-webpack-plugin");
 
 
 module.exports = {
     // devtool: 'source-map',
     //context: helpers.root("./src"),
     entry: {
-       polyfills: './src/polyfills.ts',
-        /*vendor: './src/vendor.ts',*/
+        polyfills: './src/polyfills.ts',
+        // vendor: './src/vendor.ts',
         main: "./src/main.ts"
     },
     resolve: {
@@ -33,9 +34,13 @@ module.exports = {
                     'html-loader'
                 ]
             },
+            // {
+            //     test: /\.scss$/,
+            //     use: ['raw-loader', 'sass-loader?sourceMap']
+            // },
             {
-                test: /\.scss$/,
-                use: ['raw-loader', 'sass-loader?sourceMap']
+                test: /\.svg$/,
+                use: ['raw-loader']
             }
         ]
     },
@@ -44,16 +49,42 @@ module.exports = {
         filename: "[name].js",
     },
     plugins: [
-         new AotPlugin({
+        new webpack.LoaderOptionsPlugin({
+             minimize: true,
+            // test: /\.xxx$/, // may apply this only for some modules
+            options: {
+                htmlLoader: {
+                    minimize: false
+                }
+            }
+        }),
+        new AotPlugin({
             tsConfigPath: helpers.root('tsconfig.json'),
-            entryModule: helpers.root('./src/app/app.module#AppModule')
+            entryModule: helpers.root('./src/app/app.module#AppModule'),
+
         }),
         new webpack.optimize.CommonsChunkPlugin({
             name: "common",
             filename: "common.js",
             minChunks: Infinity
         }),
-        new webpack.optimize.UglifyJsPlugin({sourcemap: true, mangle: { keep_fnames: true }}),
+        new webpack.optimize.UglifyJsPlugin({
+            minimize: true,
+            compress: {
+                warnings: false
+            },
+            output: {
+                comments: false
+            },
+            sourceMap: false
+        }),
+        new CompressionPlugin({
+            asset: "[path].gz[query]",
+            algorithm: "gzip",
+            test: /\.js$|\.html$/,
+            threshold: 10240,
+            minRatio: 0.8
+        }),
         new ExtractTextPlugin({
             filename: "[name].css"
         }),

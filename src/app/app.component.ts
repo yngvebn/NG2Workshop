@@ -1,27 +1,25 @@
 import { GreetingService } from './greeting.service';
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
     selector: 'app',
     templateUrl: 'app.component.html',
-    styleUrls: ['./app.component.scss']
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent {
     public greetingText: string = "Angular Workshop from Component";
 
-    constructor(greetingService: GreetingService) {
-        this.greetingText = greetingService.getGreeting();
+    constructor(public greetingService: GreetingService) {
     }
 
-    changeGreeting(){
-        this.greetingText = "I was changed!";
+    ngOnInit() {
+        this.greetingService.greeting$.subscribe((greeting) => {
+            this.greetingText = greeting;
+        });
+
     }
 
-    changeGreeting1(){
-        this.greetingText = "I'm single!";
-    }
-    
-    changeGreeting2(){
-       this.greetingText = "Double trouble!";
+    changeGreeting() {
+        this.greetingService.updateGreeting("I was changed!");
     }
 }
