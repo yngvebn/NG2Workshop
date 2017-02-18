@@ -7,7 +7,7 @@
     "type": "git"
   },
   "scripts": {
-    "build": "webpack -p"
+    "build": "webpack"
   },
   "author": "Yngve Bakken Nilsen <yngve.nilsen@gmail.com>",
   "license": "MIT",
@@ -49,6 +49,7 @@
     "wallaby-webpack": "^0.0.33",
     "webpack": "^2.2.1",
     "webpack-dev-server": "2.3.0",
+    "webpack-merge": "^2.6.1",
     "zone.js": "^0.7.7"
   },
   "devDependencies": {
